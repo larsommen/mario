@@ -17,4 +17,5 @@ public class Mario{
         for (int i = 0; i <numberOfStrings ; i++){
          StdOut.println(a[i]);
     	}
+  }
 }
