@@ -28,7 +28,7 @@ public class Mario{
         int dString=Integer.parseInt(coordiantes[2]);
         int dChar=Integer.parseInt(coordiantes[3]);
 
-        int returndist=0;
+       // int returndist=0;
 
 
         char current =map[stringPos].charAt(charPos);
@@ -38,9 +38,11 @@ public class Mario{
         }
 
         if(current=='O'){
+        //  System.out.println("found a O");
            return -1;
         }
         if(current=='F'){
+          //dist++;
           System.out.println("Found F at dist:  "+dist);
             if (shortInstance==-1){
               shortInstance=dist;
@@ -49,7 +51,7 @@ public class Mario{
                 shortInstance=dist;
               }
             }
-           return dist;
+           return -1;
         }
 
         if(current==' '|| current=='S' ){
@@ -72,6 +74,8 @@ public class Mario{
                 int newStringPos=stringPos+newDString;
                 int newCharPos=charPos+newDChar;
 
+                System.out.println(("Speed: "+newDString+" : "+newDChar));
+
 
                 if(newStringPos>=0 && newStringPos<numberOfStrings && newCharPos>=0 && newCharPos<lengthOfStrings){
 
@@ -79,22 +83,23 @@ public class Mario{
 
                   String newNote=""+newStringPos+","+newCharPos+","+newDString+","+newDChar;
                   int newDist = putNote(newNote, dist);
-                  System.out.println(note);
+                 // System.out.println(note);
 
 
-                  if(newDist==-1){
-                    continue;
+   //               if(newDist==-1){
 
-                  }
-                  returndist=newDist;
+   //                 ;
+
+   //               }
+                  //returndist=newDist;
 
                 }
 
               }
             }
           }
-          System.out.println(returndist);
-           return returndist;
+       //   System.out.println(returndist);
+           return -1;
         }
 
         return -1;
@@ -117,10 +122,10 @@ public class Mario{
             String hereIsS=""+index+","+i;
             posOfS.push(hereIsS);
           }
-          if (map[index].charAt(i)=='F'){
-            String hereIsF=""+index+","+i;
-            posOfF.push(hereIsF);
-          }
+         // if (map[index].charAt(i)=='F'){
+         //   String hereIsF=""+index+","+i;
+         //   posOfF.push(hereIsF);
+          //}
           if (map[index].charAt(i)==' '){
             numberOfSpaces++;
           }
@@ -137,11 +142,19 @@ public class Mario{
       //System.out.println(posOfS.pop());
       //System.out.println(posOfF.pop());
 
+      int count =0;
+
       while(!posOfS.isEmpty()){
 
+        count++;
+
         String start=posOfS.pop()+","+"0"+","+"0";
+        System.out.println("This is round: "+count);
+        System.out.println(start);
         int test= putNote(start,0);
-        System.out.println("Shostes dist to F: "+shortInstance);
+        //System.out.println("Shostes dist to F: "+shortInstance);
+
+        oldNotes= new ST<String, Integer>();
 
       }
       System.out.println("Shostes dist to F: "+shortInstance);
