@@ -1,5 +1,5 @@
   
-public class Mario{
+public class MarioTwo{
 
 public static String[] map;
 public static ResizingArrayQueue<String> notes = new ResizingArrayQueue<String>();
@@ -125,7 +125,9 @@ public static int finalDistance = -1;
 
 
       while(!posOfS.isEmpty()){
-        String start=posOfS.pop()+","+"0"+","+"0"+","+0;
+        oldNotes = new ST<String, Integer>(); // reset old notes
+
+        String start=posOfS.pop()+","+"0"+","+"0"+","+1;
         notes.enqueue(start);
 
         while(!notes.isEmpty()){
