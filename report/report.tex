@@ -1,0 +1,57 @@
+\include{preamble}
+
+
+
+
+
+
+\begin{document}
+  \maketitle
+
+%\includegraphics[scale=0.55]{frontpage}
+
+  \section{Results}
+  
+  
+  
+  
+
+  The following table summarizes our result:
+  
+    \bigskip\noindent
+  \begin{tabular}{lr}
+  	\toprule
+  	Input file & MST total weight \\ \midrule
+  	USA-highway-miles.txt	 & 16598.0 \\
+  	tinyEWG-alpha.txt & 181 \\ \bottomrule
+  \end{tabular}
+  
+    \bigskip
+  
+     The MST we found in tinyEWG-alpha.txt can be drawn like this:
+     
+     
+
+
+  
+  \section{Implementation details}
+  
+  We consider a map, where the coordinates come from loading the strings form the in-file into a String array.
+
+  We talked about two ways to implement a solution:
+  
+  \begin{itemize}
+  	\item starting in an S-field and pushing all legal fields from there to a queue and then pop the fields from the queue and push legal fields from these to the queue until a F-field is reached, counting each move and saving the smallest value for print in the end.
+  	\item doing a recursive method that starts in a S-field and calls itself on all legal fields.
+  	
+ \end{itemize}	
+ 
+ Pros and cons on each method made us decide on the first.
+ 
+ The argument is as follows:
+ 
+ If we store all visited fields with the speed we have visited them with in a simple table, we can check if we have been in a specific position with a specific speed (given by two coordinates) - if this is the case we do not go to this field again. This works because the algorithm gets us to a specific field in the shortes posible route.
+  
+  
+
+\end{document}

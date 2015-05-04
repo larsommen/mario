@@ -22,6 +22,8 @@ public class Mario{
 
 
   public static int putNote(String note, int dist){
+
+        //int newDist=dist;
         String [] coordiantes = note.split(",");
         int stringPos=Integer.parseInt(coordiantes[0]);
         int charPos=Integer.parseInt(coordiantes[1]);
@@ -29,13 +31,15 @@ public class Mario{
         int dChar=Integer.parseInt(coordiantes[3]);
 
        // int returndist=0;
+        dist++;
 
+        if(dist>=shortInstance && shortInstance!=-1){
+          return -1;
+        }
 
         char current =map[stringPos].charAt(charPos);
 
-        if(dist>shortInstance && shortInstance!=-1){
-          return -1;
-        }
+        
 
         if(current=='O'){
         //  System.out.println("found a O");
@@ -44,6 +48,7 @@ public class Mario{
         if(current=='F'){
           //dist++;
           System.out.println("Found F at dist:  "+dist);
+          System.out.println(note);
             if (shortInstance==-1){
               shortInstance=dist;
             }else{
@@ -59,13 +64,13 @@ public class Mario{
            // System.out.println("beenHere: "+note);
             return -1;
           }else{
-            dist++;
+           // dist++;
 
  //             System.out.println(note);
 //            System.out.println(dist);
-            oldNotes.put(note,1);
-            for (int i=-1; i<2; i++){
-              for(int j=-1; j<2; j++){
+            oldNotes.put(note,dist);
+            for (int i=1; i>-2; i--){
+              for(int j=1; j>-2; j--){
              // System.out.println(i+" : "+j);            
 
                 int newDString=dString+i;
@@ -74,7 +79,7 @@ public class Mario{
                 int newStringPos=stringPos+newDString;
                 int newCharPos=charPos+newDChar;
 
-                System.out.println(("Speed: "+newDString+" : "+newDChar));
+                //System.out.println(("Speed: "+newDString+" : "+newDChar));
 
 
                 if(newStringPos>=0 && newStringPos<numberOfStrings && newCharPos>=0 && newCharPos<lengthOfStrings){
@@ -151,7 +156,7 @@ public class Mario{
         String start=posOfS.pop()+","+"0"+","+"0";
         System.out.println("This is round: "+count);
         System.out.println(start);
-        int test= putNote(start,0);
+        int test= putNote(start,1);
         //System.out.println("Shostes dist to F: "+shortInstance);
 
         oldNotes= new ST<String, Integer>();
